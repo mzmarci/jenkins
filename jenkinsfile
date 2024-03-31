@@ -27,7 +27,7 @@ pipeline {
       stage('Building image') {
         steps{
         script {
-        dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}" 
+        dockerImage = docker.build "mzmarci:latest" 
         }
       }
     }
@@ -35,8 +35,9 @@ pipeline {
       stage('Pushing to ECR') {
         steps{  
            script {
-           sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"
-           sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+           sh "aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 723855297198.dkr.ecr.eu-west-1.amazonaws.com/mzmarci"
+           sh "docker tag mzmarci:latest 723855297198.dkr.ecr.eu-west-1.amazonaws.com/mzmarci:latest"
+           sh "docker push 723855297198.dkr.ecr.eu-west-1.amazonaws.com/mzmarci:latest"
          }
         }
       }
@@ -66,4 +67,4 @@ pipeline {
               //   docker tag clixx-image:$VERSION 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:latest
               //   docker push 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:clixx-image-$VERSION
               //   docker push 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:latest
-              // '''
+              // // '''

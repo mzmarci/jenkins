@@ -61,9 +61,9 @@ pipeline {
     }  
 }
 
-                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository
-                docker tag clixx-image:$VERSION 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:clixx-image-$VERSION
-                docker tag clixx-image:$VERSION 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:latest
-                docker push 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:clixx-image-$VERSION
-                docker push 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:latest
-              '''
+              //   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository
+              //   docker tag clixx-image:$VERSION 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:clixx-image-$VERSION
+              //   docker tag clixx-image:$VERSION 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:latest
+              //   docker push 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:clixx-image-$VERSION
+              //   docker push 571754706044.dkr.ecr.us-east-1.amazonaws.com/clixx-repository:latest
+              // '''

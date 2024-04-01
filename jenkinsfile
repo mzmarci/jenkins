@@ -16,7 +16,7 @@ pipeline {
        stage ('Cloning Git') {
          steps {
             sh '''
-            git clone https://github.com/mzmarci/jenkins_name.git
+            git clone https://github.com/mzmarci/server_new.git
            
             '''
          }
@@ -59,6 +59,11 @@ pipeline {
            sh 'terraform apply --auto-approve'   
         }
       }
+      stage("Delete Temporary Workspace") {
+            steps {
+                cleanWs()
+            }
+        }
     }  
 }
 
